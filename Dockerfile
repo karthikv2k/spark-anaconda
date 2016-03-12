@@ -1,18 +1,18 @@
-FROM sequenceiq/spark:1.5.1
-MAINTAINER LOGBASE
+FROM sequenceiq/spark:1.6.0
+MAINTAINER Karthik <karthikv2k@gmail.com>
 
 #Install Anaconda
-RUN curl -s https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.3.0-Linux-x86_64.sh -o anaconda.sh
+RUN curl -s https://repo.continuum.io/archive/Anaconda2-2.5.0-Linux-x86_64.sh -o anaconda.sh
 RUN chmod a+x anaconda.sh
 RUN ./anaconda.sh -b
-RUN ./anaconda3/bin/conda install -y -q ipython notebook
+RUN ./anaconda2/bin/conda update --all
 
-#Environment vaiables for Spark to use Anaconda Python and iPython notebook
-ENV PYSPARK_PYTHON /anaconda3/bin/python3
-ENV PYSPARK_DRIVER_PYTHON /anaconda3/bin/ipython3
-ENV PYSPARK_DRIVER_PYTHON_OPTS "notebook --no-browser --port=8888 --ip='*'"
+#Environment vaiables for Spark to use Anaconda Python and Jupyter notebook
+ENV PYSPARK_PYTHON /anaconda2/bin/python2
+ENV PYSPARK_DRIVER_PYTHON /anaconda2/bin/jupyter
+ENV PYSPARK_DRIVER_PYTHON_OPTS "notebook --no-browser --port 8888 --ip '*'"
 
-#iPython port
+#Jupyter port
 EXPOSE 8888
 #Spark port
 EXPOSE 4040
