@@ -5,7 +5,7 @@ MAINTAINER Karthik <karthikv2k@gmail.com>
 RUN curl -s https://repo.continuum.io/archive/Anaconda2-2.5.0-Linux-x86_64.sh -o anaconda.sh
 RUN chmod a+x anaconda.sh
 RUN ./anaconda.sh -b
-RUN ./anaconda2/bin/conda update --all
+RUN ./anaconda2/bin/conda update --all -y
 
 #Environment vaiables for Spark to use Anaconda Python and Jupyter notebook
 ENV PYSPARK_PYTHON /anaconda2/bin/python2
