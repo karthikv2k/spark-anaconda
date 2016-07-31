@@ -1,4 +1,4 @@
-FROM sequenceiq/spark:1.6.0
+FROM karthikv2k/spark:latest
 MAINTAINER Karthik <karthikv2k@gmail.com>
 
 #Install Anaconda
